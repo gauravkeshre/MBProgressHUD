@@ -67,6 +67,9 @@ typedef NS_ENUM(NSInteger, MBProgressHUDBackgroundStyle) {
     MBProgressHUDBackgroundStyleSolidColor,
     /// UIVisualEffectView or UIToolbar.layer background view
     MBProgressHUDBackgroundStyleBlur
+    /// Leaves the superview interactable while the loader is showing
+    MBProgressHUDBackgroundStyleAllowInteraction
+
 };
 
 typedef void (^MBProgressHUDCompletionBlock)();
