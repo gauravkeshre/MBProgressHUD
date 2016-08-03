@@ -1126,7 +1126,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
-    return false
+    return false;
 }
 
 #pragma mark - Layout
