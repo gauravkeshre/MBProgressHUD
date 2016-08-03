@@ -522,6 +522,12 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 #endif
 }
 
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    // UIView will be "transparent" for touch events if we return NO
+    return self.blockBackgroundWhenShowingLoader;
+}
+
 #pragma mark - Layout
 
 - (void)updateConstraints {
@@ -730,6 +736,16 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
     if (defaultMotionEffectsEnabled != _defaultMotionEffectsEnabled) {
         _defaultMotionEffectsEnabled = defaultMotionEffectsEnabled;
         [self updateBezelMotionEffects];
+    }
+}
+
+-(void)setBlockBackgroundWhenShowingLoader:(BOOL)flag{
+    if (flag != _blockBackgroundWhenShowingLoader) {
+        _blockBackgroundWhenShowingLoader = flag;
+        [self updateBezelMotionEffects];
+        if (self.mode == MBProgressHUDModeCustomView) {
+            [self updateIndicators];
+        }
     }
 }
 
@@ -1126,7 +1142,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
-    return false;
+    return NO;
 }
 
 #pragma mark - Layout
